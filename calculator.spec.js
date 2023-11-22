@@ -1,5 +1,7 @@
 // describe - набор тестов
-describe('Calculator.js', () => {
+// xdescribe('test group', () => {}) Отключить группу тестов
+
+xdescribe('Calculator.js', () => {
   //it - Описание одного теста
   // it('name', () => {
     // expect - ожидание. В одном тесте их может быть несколько. Тест считается пройденным, если все expect true
@@ -8,7 +10,9 @@ describe('Calculator.js', () => {
     // expect(5+5).toBe(9)  -> false
   // })
 
-  it('should add number to the total', () => {
+  // xit('test', () => {}) // Отключить тест. Тест не будет выполняться
+
+  xit('should add number to the total', () => {
     const calculator = new Calculator()
     calculator.add(5)
 
