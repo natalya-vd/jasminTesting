@@ -152,4 +152,14 @@ describe('Calculator.js', () => {
     expect(calculator.total).toMatch(/-?\d+/)
     expect(typeof calculator.total).toMatch('ber')
   })
+
+  // jasmine.anything() AsymmetricEqualityTester
+  it('should return the total as value', () => {
+    const calculator = new Calculator()
+    calculator.total = 10
+
+    expect(calculator.total).toEqual(jasmine.anything())
+    // expect(null).toEqual(jasmine.anything()) -> false
+    // expect(undefined).toEqual(jasmine.anything()) -> false
+  })
 })
