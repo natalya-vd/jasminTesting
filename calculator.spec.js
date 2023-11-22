@@ -92,4 +92,12 @@ describe('Calculator.js', () => {
     expect(calculator.multiply).toBeDefined()
     expect(calculator.divide).toBeDefined()
   })
+
+  // toBeNull matcher
+  it('can overwrite total value', () => {
+    const calculator = new Calculator()
+    calculator.total = null
+
+    expect(calculator.total).toBeNull()
+  })
 })
