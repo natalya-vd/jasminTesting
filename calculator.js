@@ -1,3 +1,16 @@
+class ArithmeticError extends Error {
+  constructor(message) {
+    super(message)
+    this.name = 'ArithmeticError'
+  }
+}
+class BadRequestError extends Error {
+  constructor(message) {
+    super(message)
+    this.name = 'BadRequestError'
+  }
+}
+
 function Calculator() {
   this.total = 0
 }
@@ -16,7 +29,7 @@ Calculator.prototype.multiply = function(number) {
 
 Calculator.prototype.divide = function(number) {
   if(number === 0) {
-    throw new Error('Number cannot be zero')
+    throw new ArithmeticError('Number cannot be zero')
   }
   return this.total /= number
 }

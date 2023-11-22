@@ -131,4 +131,15 @@ describe('Calculator.js', () => {
     // Ошибка с конкретным сообщением
     expect(() => calculator.divide(0)).toThrow(new Error('Number cannot be zero'))
   })
+
+  // toThrowError matcher - ошибка определенного типа или без типа
+  it('should throw error with message when divide by zero', () => {
+    const calculator = new Calculator()
+    calculator.total = 10
+
+    expect(() => calculator.divide(0)).toThrowError()
+    expect(() => calculator.divide(0)).toThrowError('Number cannot be zero')
+    expect(() => calculator.divide(0)).toThrowError( ArithmeticError, 'Number cannot be zero')
+    // expect(() => calculator.divide(0)).toThrowError( BadRequestError, 'Number cannot be zero') -> false
+  })
 })
