@@ -142,4 +142,14 @@ describe('Calculator.js', () => {
     expect(() => calculator.divide(0)).toThrowError( ArithmeticError, 'Number cannot be zero')
     // expect(() => calculator.divide(0)).toThrowError( BadRequestError, 'Number cannot be zero') -> false
   })
+
+  // toMatch matcher
+  it('should return total a number', () => {
+    const calculator = new Calculator()
+    calculator.total = 10
+
+    expect(calculator.add(10)).toBe(20)
+    expect(calculator.total).toMatch(/-?\d+/)
+    expect(typeof calculator.total).toMatch('ber')
+  })
 })
