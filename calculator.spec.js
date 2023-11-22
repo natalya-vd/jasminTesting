@@ -62,4 +62,15 @@ describe('Calculator.js', () => {
 
     expect(calculator1).toEqual(calculator2)
   })
+
+  // toBeTruthy & toBeFalsy Matchers - истинное и ложное значение в логическом контексте
+  it('toBeTruthy & toBeFalsy', () => {
+    const calculator1 = new Calculator()
+    const calculator2 = new Calculator()
+
+    expect(calculator1.total).toBeFalsy() // -> true
+    expect(calculator1).toBeTruthy() // -> true
+    expect(calculator2).toBeTruthy() // -> true
+    // expect(calculator2).toBeFalsy() //-> false
+  })
 })
