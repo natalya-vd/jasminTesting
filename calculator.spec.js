@@ -175,6 +175,7 @@ describe('Calculator.js', () => {
   })
 
   // jasmine.objectContaining - можно проверить присутствует часть объекта в ожидаемом объекте
+  // jasmine.stringContaining - можно проверить присутствует часть строки в строке
   it('should contain total as key', () => {
     const calculator = new Calculator()
     calculator.total = 10
@@ -184,5 +185,14 @@ describe('Calculator.js', () => {
     }))
     
     expect(typeof calculator.total).toEqual(jasmine.stringContaining('mbe'))
+  })
+
+  //Custom matcher
+  it('custom matcher', () => {
+    jasmine.addMatchers(CustomMatcher)
+    const calculator = new Calculator()
+    calculator.total = 10
+
+    expect(calculator).not.toBeCalculator()
   })
 })
