@@ -119,4 +119,16 @@ describe('Calculator.js', () => {
 
     expect(calculator.total).toBeNaN()
   })
+
+  //toThrow matcher - ошибка любого типа
+  it('should throw error when divide by zero', () => {
+    const calculator = new Calculator()
+    calculator.total = 10
+
+    // Любая ошибка
+    expect(() => calculator.divide(0)).toThrow()
+
+    // Ошибка с конкретным сообщением
+    expect(() => calculator.divide(0)).toThrow(new Error('Number cannot be zero'))
+  })
 })
