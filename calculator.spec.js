@@ -109,4 +109,14 @@ describe('Calculator.js', () => {
     expect(arr).toContain(3)
     expect(calculator.constructor.name).toContain('Calc')
   })
+
+  // toBeNaN matcher
+  it('doesnot handle NaN for multiply', () => {
+    const calculator = new Calculator()
+    calculator.total = 10
+
+    calculator.multiply('a')
+
+    expect(calculator.total).toBeNaN()
+  })
 })
