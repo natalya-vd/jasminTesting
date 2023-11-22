@@ -100,4 +100,13 @@ describe('Calculator.js', () => {
 
     expect(calculator.total).toBeNull()
   })
+
+  //toContain matcher
+  it('should have the calculator constructor', () => {
+    const calculator = new Calculator()
+    const arr = [1, 2, 3, 4]
+
+    expect(arr).toContain(3)
+    expect(calculator.constructor.name).toContain('Calc')
+  })
 })
