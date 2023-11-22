@@ -81,4 +81,15 @@ describe('Calculator.js', () => {
 
     expect(calculator1).not.toBe(calculator2)
   })
+
+  // toBeUndefined & toBeDefined matcher
+  it('should have common methods', () => {
+    const calculator = new Calculator()
+
+    // expect(calculator.add).not.toBeUndefined()
+    expect(calculator.add).toBeDefined()
+    expect(calculator.subtract).toBeDefined()
+    expect(calculator.multiply).toBeDefined()
+    expect(calculator.divide).toBeDefined()
+  })
 })
