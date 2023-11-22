@@ -173,4 +173,16 @@ describe('Calculator.js', () => {
     expect(calculator.total).toEqual(jasmine.any(Number))
     // expect(calculator.total).toEqual(jasmine.any(String)) -> false
   })
+
+  // jasmine.objectContaining - можно проверить присутствует часть объекта в ожидаемом объекте
+  it('should contain total as key', () => {
+    const calculator = new Calculator()
+    calculator.total = 10
+
+    expect(calculator).toEqual(jasmine.objectContaining({
+      total: 10
+    }))
+    
+    expect(typeof calculator.total).toEqual(jasmine.stringContaining('mbe'))
+  })
 })
