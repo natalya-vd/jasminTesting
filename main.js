@@ -3,10 +3,16 @@ function calculate(event) {
   const expression = /\+|\-|\*|\//
 
   const numbers = inputValue.split(expression)
+  const numberA = Number(numbers[0])
+  const numberB = Number(numbers[1])
 
-  const numberA = Number(numbers[0].trim())
-  const numberB = Number(numbers[1].trim())
-  const operator = inputValue.match(expression)[0]
+  const operation = inputValue.match(expression)
+  if(isNaN(numberA) ||isNaN(numberB) || operation === null) {
+    updateResult('Operation not recognized')
+    return
+  }
+
+  const operator = operation[0]
 
   const calculator = new Calculator()
   calculator.add(numberA)
