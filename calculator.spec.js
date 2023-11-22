@@ -73,4 +73,12 @@ describe('Calculator.js', () => {
     expect(calculator2).toBeTruthy() // -> true
     // expect(calculator2).toBeFalsy() //-> false
   })
+
+  // not Matcher
+  it('should have unique calculator object', () => {
+    const calculator1 = new Calculator()
+    const calculator2 = new Calculator()
+
+    expect(calculator1).not.toBe(calculator2)
+  })
 })
