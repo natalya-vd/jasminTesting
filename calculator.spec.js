@@ -162,4 +162,15 @@ describe('Calculator.js', () => {
     // expect(null).toEqual(jasmine.anything()) -> false
     // expect(undefined).toEqual(jasmine.anything()) -> false
   })
+
+  // jasmine.any() AsymmetricEqualityTester - класс или конструктор
+  it('should be an instance', () => {
+    const calculator = new Calculator()
+    calculator.total = 10
+
+    expect(calculator).toEqual(jasmine.any(Object))
+    expect(calculator).toEqual(jasmine.any(Calculator))
+    expect(calculator.total).toEqual(jasmine.any(Number))
+    // expect(calculator.total).toEqual(jasmine.any(String)) -> false
+  })
 })
