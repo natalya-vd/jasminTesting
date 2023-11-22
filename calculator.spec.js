@@ -52,4 +52,14 @@ describe('Calculator.js', () => {
 
     expect(calculator.total).toBe(0)
   })
+
+  //ToEqual Matcher - глубокое сравнение, для объектов
+  it('should initialize the calculator', () => {
+    const calculator1 = new Calculator()
+    const calculator2 = new Calculator()
+
+    // calculator1.total = '0' -> expect false
+
+    expect(calculator1).toEqual(calculator2)
+  })
 })
