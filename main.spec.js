@@ -87,7 +87,7 @@ describe('main.js', () => {
       expect(spyAdd).toHaveBeenCalledTimes(1)
     })
 
-    it('calls updateResult', () => {
+    it('calls updateResult (example for callThrough)', () => {
       const spy = spyOn(window, 'updateResult')
       // .and.callThrough() - Будет вызывать реальный метод (multiply) и следить за ним
       const spyMultiply = spyOn(Calculator.prototype, 'multiply').and.callThrough()
@@ -97,6 +97,21 @@ describe('main.js', () => {
       expect(spy).toHaveBeenCalled()
       expect(spyMultiply).toHaveBeenCalled()
       expect(spy).toHaveBeenCalledWith(27)
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+
+    it('calls updateResult (example for callFake)', () => {
+      const spy = spyOn(window, 'updateResult')
+      // .and.callFake() - Будет вызывать поддельный метод (который указан в callFake) и следить за реальным методом multiply
+      spyOn(Calculator.prototype, 'multiply').and.callFake(() => {
+        return 'fake call'
+      })
+
+      calculate('3*9')
+
+      expect(spy).toHaveBeenCalled()
+      expect(Calculator.prototype.multiply).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalledWith('fake call')
       expect(spy).toHaveBeenCalledTimes(1)
     })
   })
