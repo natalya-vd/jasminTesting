@@ -143,7 +143,7 @@ describe('main.js', () => {
 
     it('doesnot handle errors', () => {
       spyOn(Calculator.prototype, 'multiply').and.throwError('Some error')
-      
+
       expect(() => calculate('3*3')).toThrowError('Some error')
     })
   })
@@ -166,6 +166,16 @@ describe('main.js', () => {
       updateResult('5')
 
       expect(element.innerText).toBe('5')
+    })
+  })
+
+  describe('showVersion()', () => {
+    it('should call the showVersion method', () => {
+      spyOn(document, 'getElementById').and.returnValue({
+        innerText: null
+      })
+
+      showVersion()
     })
   })
 })
