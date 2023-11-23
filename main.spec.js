@@ -114,6 +114,19 @@ describe('main.js', () => {
       expect(spy).toHaveBeenCalledWith('fake call')
       expect(spy).toHaveBeenCalledTimes(1)
     })
+
+    it('calls updateResult (example for returnValue)', () => {
+      const spy = spyOn(window, 'updateResult')
+      // .and.returnValue() - Будет возвращено значение и использоваться в расчетах. Далее будет следить за реальным методом multiply (но значение будет то, которое указано в returnValue)
+      spyOn(Calculator.prototype, 'multiply').and.returnValue('return value')
+
+      calculate('3*9')
+
+      expect(spy).toHaveBeenCalled()
+      expect(Calculator.prototype.multiply).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalledWith('return value')
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('updateResult()', () => {
