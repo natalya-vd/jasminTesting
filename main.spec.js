@@ -117,7 +117,7 @@ describe('main.js', () => {
 
     it('calls updateResult (example for returnValue)', () => {
       const spy = spyOn(window, 'updateResult')
-      // .and.returnValue() - Будет возвращено значение и использоваться в расчетах. Далее будет следить за реальным методом multiply (но значение будет то, которое указано в returnValue)
+      // .and.returnValue() - Будет возвращено значение и использоваться в расчетах. Далее будет следить за реальным методом multiply (но значение будет то, которое указано в returnValue). Для каждого вызова будет значение указанное в returnValue
       spyOn(Calculator.prototype, 'multiply').and.returnValue('return value')
 
       calculate('3*9')
@@ -125,6 +125,19 @@ describe('main.js', () => {
       expect(spy).toHaveBeenCalled()
       expect(Calculator.prototype.multiply).toHaveBeenCalled()
       expect(spy).toHaveBeenCalledWith('return value')
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+
+    it('calls updateResult (example for returnValues)', () => {
+      const spy = spyOn(window, 'updateResult')
+      // .and.returnValues() - Будут возвращены значения и использоваться в расчетах (указываем значения для каждого вызова функции add). Далее будет следить за реальным методом add (но значения будут те, которые указаны в returnValues для каждого вызова)
+      spyOn(Calculator.prototype, 'add').and.returnValues(null, 'second call')
+
+      calculate('3+9')
+
+      expect(spy).toHaveBeenCalled()
+      expect(Calculator.prototype.add).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalledWith('second call')
       expect(spy).toHaveBeenCalledTimes(1)
     })
   })
