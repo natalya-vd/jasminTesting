@@ -5,6 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple calculator</title>
+
+  <script>
+    window.onload = () => {
+      showVersion()
+    }
+  </script>
 </head>
 
 <body>
@@ -16,6 +22,8 @@
   <div>
     <span>Result: <span id="result">0</span></span>
   </div>
+
+  <div>Version: <span id="version"></span></div>
 
   <script src="./main.js"></script>
   <script src="./calculator.js"></script>
