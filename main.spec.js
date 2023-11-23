@@ -44,7 +44,7 @@ describe('main.js', () => {
 
     it('calls subtract', () => {
       const spy = spyOn(Calculator.prototype, 'subtract')
-      const spyAdd = spyOn(Calculator.prototype, 'add')
+      const spyAdd = spyOn(Calculator.prototype, 'add').and.callThrough()
 
       calculate('3-2')
 
@@ -59,7 +59,7 @@ describe('main.js', () => {
 
     it('calls multiply', () => {
       const spy = spyOn(Calculator.prototype, 'multiply')
-      const spyAdd = spyOn(Calculator.prototype, 'add')
+      const spyAdd = spyOn(Calculator.prototype, 'add').and.callThrough()
 
       calculate('4*5')
 
@@ -74,7 +74,7 @@ describe('main.js', () => {
 
     it('calls divide', () => {
       const spy = spyOn(Calculator.prototype, 'divide')
-      const spyAdd = spyOn(Calculator.prototype, 'add')
+      const spyAdd = spyOn(Calculator.prototype, 'add').and.callThrough()
 
       calculate('10/2')
 
@@ -87,8 +87,18 @@ describe('main.js', () => {
       expect(spyAdd).toHaveBeenCalledTimes(1)
     })
 
-    xit('validate operation')
-    xit('calls updateResult')
+    it('calls updateResult', () => {
+      const spy = spyOn(window, 'updateResult')
+      // .and.callThrough() - Будет вызывать реальный метод (multiply) и следить за ним
+      const spyMultiply = spyOn(Calculator.prototype, 'multiply').and.callThrough()
+
+      calculate('3*9')
+
+      expect(spy).toHaveBeenCalled()
+      expect(spyMultiply).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalledWith(27)
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('updateResult()', () => {
