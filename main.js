@@ -8,7 +8,7 @@ function calculate(event) {
 
   const operation = inputValue.match(expression)
   if(isNaN(numberA) ||isNaN(numberB) || operation === null) {
-    updateResult('Operation not recognized')
+    updateResult('Expression not recognized')
     return
   }
 
@@ -31,6 +31,9 @@ function calculate(event) {
     case '/':
       result = calculator.divide(numberB)
       break
+
+    default:
+      result = 'Operation not recognized'
   }
 
   updateResult(result)
@@ -43,4 +46,4 @@ function updateResult(result) {
   }
 }
 
-document.getElementById('inputValue').addEventListener('change', calculate)
+document.getElementById('inputValue') && document.getElementById('inputValue').addEventListener('change', calculate)
