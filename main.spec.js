@@ -9,6 +9,7 @@ describe('main.js', () => {
 
       expect(window.updateResult).toHaveBeenCalled()
       expect(window.updateResult).toHaveBeenCalledWith('Expression not recognized')
+      expect(window.updateResult).toHaveBeenCalledTimes(1)
     })
 
     it('validate expression if the second number is invalid', () => {
@@ -18,6 +19,7 @@ describe('main.js', () => {
 
       expect(window.updateResult).toHaveBeenCalled()
       expect(window.updateResult).toHaveBeenCalledWith('Expression not recognized')
+      expect(window.updateResult).toHaveBeenCalledTimes(1)
     })
 
     it('validate expression if the operation is invalid', () => {
@@ -27,6 +29,7 @@ describe('main.js', () => {
 
       expect(window.updateResult).toHaveBeenCalled()
       expect(window.updateResult).toHaveBeenCalledWith('Expression not recognized')
+      expect(window.updateResult).toHaveBeenCalledTimes(1)
     })
 
     xit('calls add')
