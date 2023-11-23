@@ -175,7 +175,15 @@ describe('main.js', () => {
         innerText: null
       })
 
+      // spyOnProperty вернет Object.getOwnPropertyDescriptor(Calculator.prototype, 'version').get
+      const spy = spyOnProperty(Calculator.prototype, 'version', 'get').and.returnValue('0.8')
+
       showVersion()
+
+      expect(spy).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalledTimes(1)
+      expect(spy()).toEqual('0.8')
+      // expect(spy).toHaveBeenCalledOnceWith('0.8') - не можем использовать
     })
   })
 })
