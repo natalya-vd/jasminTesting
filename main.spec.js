@@ -10,7 +10,24 @@ describe('main.js', () => {
   })
 
   describe('updateResult()', () => {
-    xit('add result to the DOM element')
+    let element
+    
+    beforeAll(() => {
+      element = document.createElement('div')
+      element.setAttribute('id', 'result')
+      document.body.appendChild(element)
+    })
+
+    afterAll(() => {
+      const element = document.getElementById('result')
+      document.body.removeChild(element)
+    })
+
+    it('add result to the DOM element', () => {
+      updateResult('5')
+
+      expect(element.innerText).toBe('5')
+    })
   })
 })
 
