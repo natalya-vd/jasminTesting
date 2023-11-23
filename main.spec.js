@@ -140,6 +140,12 @@ describe('main.js', () => {
       expect(spy).toHaveBeenCalledWith('second call')
       expect(spy).toHaveBeenCalledTimes(1)
     })
+
+    it('doesnot handle errors', () => {
+      spyOn(Calculator.prototype, 'multiply').and.throwError('Some error')
+      
+      expect(() => calculate('3*3')).toThrowError('Some error')
+    })
   })
 
   describe('updateResult()', () => {
