@@ -195,8 +195,9 @@ describe('Calculator.js', () => {
 
     describe('get version', () => {
       it('should get async version', (done) => {
+        spyOn(window, 'fetch').and.returnValue(Promise.resolve(new Response('{"version": "0.4"}')))
         calculator.version.then((version) => {
-          expect(version).toBe('0.2')
+          expect(version).toBe('0.4')
           done()
         })
       })

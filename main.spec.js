@@ -169,20 +169,23 @@ describe('main.js', () => {
     })
   })
 
-  xdescribe('showVersion()', () => {
-    it('should call the showVersion method', () => {
-      spyOn(document, 'getElementById').and.returnValue({
+  describe('showVersion()', () => {
+    it('should call the showVersion method', (done) => {
+      const element = spyOn(document, 'getElementById').and.returnValue({
         innerText: null
       })
 
       // spyOnProperty вернет Object.getOwnPropertyDescriptor(Calculator.prototype, 'version').get
-      const spy = spyOnProperty(Calculator.prototype, 'version', 'get').and.returnValue('0.8')
+      const spy = spyOnProperty(Calculator.prototype, 'version', 'get').and.returnValue(Promise.resolve('0.8'))
 
       showVersion()
 
       expect(spy).toHaveBeenCalled()
       expect(spy).toHaveBeenCalledTimes(1)
-      expect(spy()).toEqual('0.8')
+      spy().then((version) => {
+        expect(element().innerText).toBe(version)
+        done()
+      })
       // expect(spy).toHaveBeenCalledOnceWith('0.8') - не можем использовать
     })
   })

@@ -36,12 +36,13 @@ Calculator.prototype.divide = function(number) {
 
 Object.defineProperty(Calculator.prototype, 'version', {
   get: function () {
-    // Здесь запрос на сервер за данными
-    return new Promise((response) => {
-      setTimeout(() => {
-        response('0.2')
-      }, 2000)
-    })
+    return fetch('https://gist.githubusercontent.com/natalya-vd/ae9e15229f903349f72d655730e55ef1/raw/9e9c4fe06115a236a4bcc97f08972c95806fa3cf/version.json')
+      .then((result) => {
+        return result.json()
+      })
+      .then((jsonData) => {
+        return jsonData.version
+      })
   },
   configurable: true,
   enumerable: true
