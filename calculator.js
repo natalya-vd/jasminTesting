@@ -36,7 +36,12 @@ Calculator.prototype.divide = function(number) {
 
 Object.defineProperty(Calculator.prototype, 'version', {
   get: function () {
-    return '0.1'
+    // Здесь запрос на сервер за данными
+    return new Promise((response) => {
+      setTimeout(() => {
+        response('0.2')
+      }, 2000)
+    })
   },
   configurable: true,
   enumerable: true
