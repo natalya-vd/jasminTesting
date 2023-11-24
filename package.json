@@ -1,0 +1,24 @@
+{
+  "name": "jasmintesting",
+  "version": "1.0.0",
+  "description": "Jasmine Testing",
+  "main": "main.js",
+  "scripts": {
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natalya-vd/jasminTesting.git"
+  },
+  "author": "Natalya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natalya-vd/jasminTesting/issues"
+  },
+  "homepage": "https://github.com/natalya-vd/jasminTesting#readme",
+  "devDependencies": {
+    "jasmine-core": "^5.1.1",
+    "karma": "^6.4.2",
+    "karma-jasmine": "^5.1.0"
+  }
+}
