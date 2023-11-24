@@ -6,9 +6,10 @@ module.exports = function (config) {
       '*.js',
       '*.spec.js'
     ],
-    plugins: ['karma-jasmine'],
+    plugins: ['karma-jasmine', 'karma-chrome-launcher'],
     reporters: ['dots'],
     colors: true,
-    singleRun: true
+    singleRun: true,
+    browsers: ['ChromeHeadless']
   })
 }
