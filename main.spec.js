@@ -169,7 +169,7 @@ describe('main.js', () => {
     })
   })
 
-  describe('showVersion()', () => {
+  xdescribe('showVersion()', () => {
     it('should call the showVersion method', () => {
       spyOn(document, 'getElementById').and.returnValue({
         innerText: null

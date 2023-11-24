@@ -192,5 +192,14 @@ describe('Calculator.js', () => {
         // expect(() => calculator.divide(0)).toThrowError( BadRequestError, 'Number cannot be zero') -> false
       })
     })
+
+    describe('get version', () => {
+      it('should get async version', (done) => {
+        calculator.version.then((version) => {
+          expect(version).toBe('0.2')
+          done()
+        })
+      })
+    })
   })
 })
